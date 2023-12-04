@@ -1,3 +1,25 @@
-p {
+.root {
+height: 2000px;
+width: 2000px;
+background-color: aquamarine;
+}
+
+.container {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center; 
+height: 100vh;
+width: 100%;
+background-color: aquamarine;
+}
+
+.header-container {
+  text-align: center;
+  font-size: 50px;
+  color: purple;
+}
+
+#submit {
   color: blue;
 }

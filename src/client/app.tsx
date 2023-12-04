@@ -8,9 +8,18 @@ function App () {
   const hi:string = 'Hello'
 
   return (
-    <p>
-      Hello World
-    </p>
+   <div className='container'>
+    <div className='header-container'>
+      <header>AlgoVis</header>
+    </div>
+    <div>
+    <form>
+      <input id='username' placeholder='Enter username'></input>
+      <input id='password' placeholder='Enter password'></input>
+    <button id='submit'>Login</button>
+    </form>
+    </div>
+   </div>
   )
 };
 
