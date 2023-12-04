@@ -12,12 +12,18 @@ function App () {
     <div className='header-container'>
       <header>AlgoVis</header>
     </div>
-    <div>
-    <form>
-      <input id='username' placeholder='Enter username'></input>
-      <input id='password' placeholder='Enter password'></input>
-    <button id='submit'>Login</button>
-    </form>
+    <div className='form-container'>
+        <form>
+          <div className='input-group'>
+            <input id='username' className='input-boxes' placeholder='Enter username'></input>
+          </div>
+          <div className='input-group'>
+            <input id='password' className='input-boxes' placeholder='Enter password'></input>
+          </div>
+          <div className='button-group'>
+            <button id='submit'>Login</button>
+          </div>
+        </form>
     </div>
    </div>
   )

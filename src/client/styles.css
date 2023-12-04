@@ -11,13 +11,23 @@ align-items: center;
 justify-content: center; 
 height: 100vh;
 width: 100%;
-background-color: aquamarine;
+background: linear-gradient(blue, green);
 }
 
 .header-container {
   text-align: center;
   font-size: 50px;
-  color: purple;
+  color: yellow;
+}
+
+.form-container {
+  text-align: center;
+}
+
+.input-boxes {
+  width: 300px;
+  border-radius: 1px #ccc;
+  border-radius: 5px;
 }
 
 #submit {
