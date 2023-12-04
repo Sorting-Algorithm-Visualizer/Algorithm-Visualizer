@@ -1,0 +1,8 @@
+{
+  "include": [
+    "src/server/**/*"
+  ],
+  "compilerOptions": {
+    "strictNullChecks": true
+  }
+}

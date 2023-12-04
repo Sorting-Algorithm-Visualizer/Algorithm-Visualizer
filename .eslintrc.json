@@ -16,5 +16,9 @@
         "react"
     ],
     "rules": {
+        "semi": "off",
+        "@typescript-eslint/semi": ["warn", "always"],
+        "no-multiple-empty-lines": ["warn", {"max": 2}],
+        "@typescript-eslint/no-var-requires": "off"
     }
 }
