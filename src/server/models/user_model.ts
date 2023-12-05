@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcryptjs = require('bcryptjs');
 require('dotenv').config();
 
 const myURI = process.env.DATABASE_URI;
@@ -17,10 +18,24 @@ db.on('error', (err) => {
 });
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   created_at: { type: Date, default: new Date() }
 });
+
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
+    return next();
+  }
+  this.password = await bcryptjs.hash(this.password, 10);
+  next();
+});
+
+userSchema.methods.comparePassword = async function (plaintext, callback) {
+  const placeholder = await bcryptjs.compare(plaintext, this.password);
+  console.log('placeholder:', placeholder);
+  return callback(placeholder);
+};
 
 const userModel = mongoose.model('user', userSchema);
 
