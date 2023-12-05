@@ -10,6 +10,6 @@
       "sourceMap": true,
       "jsx": "react"
     },
-    "include": ["src/**/*.tsx", "src/**/*.ts", "webpack.config.js"],
+    "include": ["src/**/*.tsx", "src/**/*.ts", "webpack.config.js", "jest.config.js", "__tests__/**/*"],
     "exclude": ["node_modules"]
   }

@@ -2,6 +2,7 @@
 const express = require('express');
 
 const authRouter = require('./routers/authRouter');
+const authController = require('./controllers/authController')
 
 const app = express();
 const port: number = 3000;
@@ -9,9 +10,15 @@ const port: number = 3000;
 // serve static files
 app.use(express.static('dist'));
 
+// parse incoming json
+app.use(express.json());
 
-app.post('/auth/login', (req, res) => {
-  res.status(200).send('Where do you want this to go Andrew?');
+// parse incoming urlencoded data
+app.use(express.urlencoded({ extended: true }));
+
+
+app.post('/auth/login', authController.authUser, (req, res) => {
+  res.status(200).send('redirect to homepage');
 });
 
 app.use('/auth', authRouter);
