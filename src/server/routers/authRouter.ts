@@ -12,6 +12,4 @@ router.post('/',
     res.status(200).send('made it back from auth');
   });
 
-
-
 module.exports = router;

@@ -2,7 +2,7 @@
 const express = require('express');
 
 const authRouter = require('./routers/authRouter');
-const authController = require('./controllers/authController')
+const authController = require('./controllers/authController');
 
 const app = express();
 const port: number = 3000;
