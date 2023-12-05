@@ -10,6 +10,10 @@ const port: number = 3000;
 app.use(express.static('dist'));
 
 
+app.use('auth/login', (req, res) => {
+  res.status(200).send('Where do you want this to go Andrew?');
+});
+
 app.use('/auth', authRouter);
 
 // handle unknown endpoints

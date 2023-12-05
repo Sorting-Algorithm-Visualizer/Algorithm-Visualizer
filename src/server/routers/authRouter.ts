@@ -1,10 +1,15 @@
+// router for authentication and authorization
 export {};
 
 const express = require('express');
+const authRouter = require('../controllers/authController');
+
 const router = express.Router();
 
-router.post('/', (req, res) => {
-  res.status(200).send('made it back from auth');
+router.post('/',
+  authController.createUser,
+  (req, res) => {
+    res.status(200).send('made it back from auth');
 });
 
 
