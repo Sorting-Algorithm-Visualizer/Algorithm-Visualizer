@@ -1,5 +1,5 @@
 const authController: {
-  
+  [index: string]: unknown
 } = {};
 
 authController.createUser = (req, res, next) => {
