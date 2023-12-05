@@ -1,15 +1,16 @@
 // this is our app
 
 import React from 'react';
+import SortingVisualizer from './sortingVisualizer';
 import './styles.css';
 
-function App (): any {
+function App(): any {
   const hi: string = 'Hello';
   console.log(hi);
 
   return (
-   <div className='container'>
-    <div className='header-container'>
+    <div className='container'>
+      {/* <div className='header-container'>
       <header>AlgoVis</header>
     </div>
     <div className='form-container'>
@@ -24,9 +25,10 @@ function App (): any {
             <button id='submit'>Login</button>
           </div>
         </form>
+    </div> */}
+      <SortingVisualizer />
     </div>
-   </div>
   );
-};
+}
 
 export default App;
