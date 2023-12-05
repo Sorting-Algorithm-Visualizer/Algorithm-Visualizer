@@ -1,7 +1,7 @@
 // config file for webpack
 
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: path.join(__dirname, 'src', 'client', 'index.tsx'),
@@ -13,7 +13,7 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx|js|jsx)$/,
-        exclude: /node_modules/, 
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -42,6 +42,9 @@ module.exports = {
     extensions: ['.*', '.ts', '.tsx', '.js', '.jsx']
   },
   devServer: {
-    port: 8080
+    port: 8080,
+    proxy: {
+      '/': 'http://localhost:3000'
+    }
   }
-}
+};

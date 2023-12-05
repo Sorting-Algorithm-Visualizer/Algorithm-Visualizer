@@ -17,6 +17,9 @@
     ],
     "rules": {
         "semi": "off",
-        "@typescript-eslint/semi": ["warn", "always"]
+        "@typescript-eslint/semi": ["warn", "always"],
+        "no-multiple-empty-lines": ["warn", {"max": 2}],
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/consistent-indexed-object-style": ["warn", "index-signature"]
     }
 }
