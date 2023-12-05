@@ -21,7 +21,9 @@ app.post('/auth/login', authController.authUser, (req, res) => {
   res.status(200).send('redirect to homepage');
 });
 
-app.use('/auth', authRouter);
+app.use('/auth/register', authRouter, (req, res) => {
+  res.status(200).redirect('/');
+});
 
 // handle unknown endpoints
 app.use((req, res) => {
