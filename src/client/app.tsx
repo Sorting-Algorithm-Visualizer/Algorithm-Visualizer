@@ -27,20 +27,10 @@ function App (): any {
         </form>
         <form action='/auth/register' method='POST'>
       <div className='input-group'>
-        <input
-          id='username'
-          name='username'
-          className='input-boxes'
-          placeholder='Enter new username'
-        ></input>
+        <input id='username' name='username' className='input-boxes' placeholder='Enter new username'></input>
       </div>
       <div className='input-group'>
-        <input
-          id='password'
-          name='password'
-          className='input-boxes'
-          placeholder='Enter password'
-        ></input>
+        <input id='password' name='password' className='input-boxes' placeholder='Enter password'></input>
       </div>
       <div className='button-group'>
         <button id='submit'>Register</button>

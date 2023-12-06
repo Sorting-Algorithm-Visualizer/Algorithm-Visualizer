@@ -4,7 +4,10 @@ require('dotenv').config();
 const myURI = process.env.DATABASE_URI;
 console.log('myURI:', myURI);
 
-mongoose.connect(myURI);
+mongoose.connect(myURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
 

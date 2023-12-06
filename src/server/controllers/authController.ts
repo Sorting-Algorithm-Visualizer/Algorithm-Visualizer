@@ -27,14 +27,19 @@ authController.authUser = async (req, res, next) => {
   try {
     let authorized:boolean = false
     let compareUser = await userModel.findOne ({ username, password })
-    if (compareUser) authorized = true;
+    console.log(compareUser)
+    if (compareUser){
+      console.log("Found valid user")
+      authorized = true;
+    }
     if (authorized){
+      console.log('authorized')
       return next ()
     } else {
       console.log('Wrong username or password')
     }
     } catch (err) {
-      return next ({ message: "Error logging in", err})
+      return next ({ message: "Error logging in =>", err})
     }
  }
 
