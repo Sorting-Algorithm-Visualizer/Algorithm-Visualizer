@@ -1,8 +1,10 @@
 // this is our server
 const express = require('express');
+const cookieParser = require('cookie-parser');
 
 const authRouter = require('./routers/authRouter');
 const authController = require('./controllers/authController');
+const cookieController = require('./controllers/cookieController');
 
 const app = express();
 const port: number = 3000;
@@ -16,12 +18,20 @@ app.use(express.json());
 // parse incoming urlencoded data
 app.use(express.urlencoded({ extended: true }));
 
+// parse incoming cookies
+app.use(cookieParser());
 
 app.post('/auth/login', authController.authUser, (req, res) => {
   res.status(200).send('redirect to homepage');
 });
 
 app.use('/auth', authRouter);
+
+// fenced endpoint
+app.get('/secret', cookieController.checkSessionCookie, (req, res) => {
+  if (res.locals.validated === true) return res.status(200).send('You are welcome here');
+  return res.status(200).send('Get out');
+});
 
 // handle unknown endpoints
 app.use((req, res) => {

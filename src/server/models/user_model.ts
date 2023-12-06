@@ -3,7 +3,7 @@ const bcryptjs = require('bcryptjs');
 require('dotenv').config();
 
 // const myURI = process.env.DATABASE_URI;
-const myURI = (process.env.NODE_ENV === 'test') ? process.env.TEST_DATABASE_URI : process.env.DATABASEURI;
+const myURI = (process.env.NODE_ENV === 'test') ? process.env.TEST_DATABASE_URI : process.env.DATABASE_URI;
 
 console.log('myURI:', myURI);
 
