@@ -1,10 +1,9 @@
 // this is our server
 const express = require('express');
+const path = require('path');
 
 const authRouter = require('./routers/authRouter');
 const authController = require('./controllers/authController');
-const SortingVisualizer = require('../../src/client/AlgoLogic')
-
 
 const app = express();
 const port: number = 3000;
@@ -18,12 +17,15 @@ app.use(express.json());
 // parse incoming urlencoded data
 app.use(express.urlencoded({ extended: true }));
 
-
 app.post('/login', authController.authUser, (req, res) => {
-  res.status(200).sendFile();
+  res.redirect('/visualizer');
 });
 
-app.use('/auth/register', authRouter);
+app.use('/auth', authRouter);
+
+app.get('/visualizer', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', '..', 'dist', 'visualizer.html'));
+});
 
 // handle unknown endpoints
 app.use((req, res) => {

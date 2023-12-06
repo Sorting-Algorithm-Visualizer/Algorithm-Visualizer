@@ -6,7 +6,7 @@
     "test": "jest --verbose",
     "start": "nodemon src/server/server.ts",
     "build": "NODE_ENV=production webpack",
-    "dev": "NODE_ENV=development concurrently \"webpack serve\" \"nodemon src/server/server.ts\" --kill-others"
+    "dev": "NODE_ENV=development concurrently \"webpack serve --open\" \"nodemon src/server/server.ts\" --kill-others"
   },
   "author": "",
   "license": "ISC",
