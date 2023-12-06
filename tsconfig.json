@@ -2,7 +2,7 @@
     "compilerOptions": {
       "target": "es6",
       "module": "commonjs",
-      "strict": true,
+      "strictNullChecks": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
@@ -11,6 +11,6 @@
       "jsx": "react",
       "strictNullChecks": true,
     },
-    "include": ["src/**/*.tsx", "src/client/index.tsx"],
+    "include": ["src/**/*.tsx", "src/**/*.ts", "webpack.config.js", "jest.config.js", "__tests__/**/*"],
     "exclude": ["node_modules"]
   }

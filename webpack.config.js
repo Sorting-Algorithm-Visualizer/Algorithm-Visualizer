@@ -26,6 +26,11 @@ module.exports = {
         },
       },
       {
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']
+          }
+        }
+      },
+      {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
@@ -34,6 +39,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
+        exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
       },
     ],
@@ -47,6 +53,9 @@ module.exports = {
     extensions: ['.*', '.ts', '.tsx', '.js', '.jsx'],
   },
   devServer: {
-    port: 8000,
-  },
+    port: 8080,
+    proxy: {
+      '/': 'http://localhost:3000'
+    }
+  }
 };
