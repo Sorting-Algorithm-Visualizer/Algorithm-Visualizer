@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SortingVisualizer from './AlgoLogic';
-import './styles.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './styles.css';
 
 function App(): any {
-  const hi: string = 'Hello';
-  console.log(hi);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+  };
 
   return (
     <Router>
@@ -17,8 +19,17 @@ function App(): any {
           <header>AlgoVis</header>
         </div>
         <Routes>
-        <Route path="/" Component={LoginPage} />
-        <Route path="/register" Component={RegisterPage} />
+          <Route
+            path='/'
+            element={
+              isAuthenticated ? (
+                <SortingVisualizer />
+              ) : (
+                <LoginPage onLoginSuccess={handleLoginSuccess} />
+              )
+            }
+          />
+          <Route path='/register' element={<RegisterPage />} />
         </Routes>
       </div>
     </Router>
