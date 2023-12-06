@@ -1,13 +1,8 @@
-// this is our app
-
 import React from 'react';
 import SortingVisualizer from './AlgoLogic';
 import './styles.css';
 
 function App(): any {
-  const hi: string = 'Hello';
-  console.log(hi);
-
   return (
     <div className='container'>
       {/* <div className='header-container'>

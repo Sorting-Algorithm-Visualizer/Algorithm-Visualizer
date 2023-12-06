@@ -12,12 +12,12 @@ const Column = ({
       style={{
         height: `${value}px`,
         backgroundColor: isComparing ? 'red' : 'green',
-        width: '30px',
+        width: '20px',
         display: 'inline-block',
         margin: '0 2px',
         position: 'relative',
       }}>
-      <span
+      {/* <span
         style={{
           position: 'absolute',
           top: '50%',
@@ -26,7 +26,7 @@ const Column = ({
           color: 'white',
         }}>
         {value}
-      </span>
+      </span> */}
     </div>
   );
 };
@@ -41,7 +41,7 @@ const SortingVisualizer = () => {
 
   const generateArray = (): void => {
     const result: number[] = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 60; i++) {
       const randomNum = Math.random() * 100 + 1;
       const floored = Math.floor(randomNum);
       result.push(floored);
@@ -79,7 +79,7 @@ const SortingVisualizer = () => {
     while (leftIndex < middle && rightIndex < end) {
       setCurrentIndices([leftIndex, rightIndex]);
 
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise(resolve => setTimeout(resolve, 250));
 
       if (arr[leftIndex] < arr[rightIndex]) {
         result.push(arr[leftIndex]);
