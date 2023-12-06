@@ -26,11 +26,6 @@ module.exports = {
         },
       },
       {
-            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']
-          }
-        }
-      },
-      {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
@@ -55,7 +50,7 @@ module.exports = {
   devServer: {
     port: 8080,
     proxy: {
-      '/': 'http://localhost:3000'
-    }
-  }
+      '/': 'http://localhost:3000',
+    },
+  },
 };
