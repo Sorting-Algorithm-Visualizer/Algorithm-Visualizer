@@ -3,6 +3,8 @@ const express = require('express');
 
 const authRouter = require('./routers/authRouter');
 const authController = require('./controllers/authController');
+const SortingVisualizer = require('../../src/client/AlgoLogic')
+
 
 const app = express();
 const port: number = 3000;
@@ -17,11 +19,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.post('/auth/login', authController.authUser, (req, res) => {
-  res.status(200).send('redirect to homepage');
+app.post('/login', authController.authUser, (req, res) => {
+  res.status(200).sendFile();
 });
 
-app.use('/auth', authRouter);
+app.use('/auth/register', authRouter);
 
 // handle unknown endpoints
 app.use((req, res) => {
