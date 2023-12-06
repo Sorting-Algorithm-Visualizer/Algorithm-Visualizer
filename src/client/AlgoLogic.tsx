@@ -42,7 +42,7 @@ const SortingVisualizer = () => {
 
   const generateArray = (): void => {
     const result: number[] = [];
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 75; i++) {
       const randomNum = Math.random() * 100 + 1;
       const floored = Math.floor(randomNum);
       result.push(floored);
