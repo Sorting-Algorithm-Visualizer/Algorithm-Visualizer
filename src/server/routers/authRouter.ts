@@ -7,7 +7,7 @@ const cookieController = require('../controllers/cookieController');
 
 const router = express.Router();
 
-router.post('/signup',
+router.post('/register',
   authController.createUser,
   cookieController.setSessionCookie,
   (req, res) => {
@@ -17,6 +17,11 @@ router.post('/signup',
 
 router.post('/login', authController.authUser, (req, res) => {
   res.status(200).send('redirect to homepage');
+});
+
+router.post('/signup', (req, res) => {
+  // res.status(200).send('made it back from auth');
+  res.redirect('/visualizer');
 });
 
 module.exports = router;

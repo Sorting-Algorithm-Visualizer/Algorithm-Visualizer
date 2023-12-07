@@ -1,28 +1,27 @@
 import React from 'react';
 // import SortingVisualizer from './AlgoLogic';
 import './styles.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginPage from './LoginPage';
+import RegisterPage from './RegisterPage';
+
 
 function App (): any {
+  const hi: string = 'Hello';
+  console.log(hi);
+
   return (
-    <div className='container'>
-      <div className='header-container'>
-      <header>AlgoVis</header>
-    </div>
-    <div className='form-container'>
-        <form action='/auth/signup' method='POST'>
-          <div className='input-group'>
-            <input id='username' className='input-boxes' name='username' placeholder='Enter username'></input>
-          </div>
-          <div className='input-group'>
-            <input id='password' className='input-boxes' name='password' placeholder='Enter password'></input>
-          </div>
-          <div className='button-group'>
-            <button id='submit'>Login</button>
-          </div>
-        </form>
-    </div>
-      {/* <SortingVisualizer /> */}
-    </div>
+    <Router>
+      <div className='container'>
+        <div className='header-container'>
+          <header>AlgoVis</header>
+        </div>
+        <Routes>
+        <Route path="/" Component={LoginPage} />
+        <Route path="/register" Component={RegisterPage} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

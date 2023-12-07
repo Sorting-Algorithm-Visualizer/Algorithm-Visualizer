@@ -1,6 +1,7 @@
 // this is our server
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const path = require('path');
 
 const authRouter = require('./routers/authRouter');
 const authController = require('./controllers/authController');
@@ -25,12 +26,20 @@ app.post('/auth/login', authController.authUser, (req, res) => {
   res.status(200).send('redirect to homepage');
 });
 
+app.post('/login', authController.authUser, (req, res) => {
+  res.redirect('/visualizer');
+});
+
 app.use('/auth', authRouter);
 
 // fenced endpoint
 app.get('/secret', cookieController.checkSessionCookie, (req, res) => {
   if (res.locals.validated === true) return res.status(200).send('You are welcome here');
   return res.status(200).send('Get out');
+});
+
+app.get('/visualizer', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', '..', 'dist', 'visualizer.html'));
 });
 
 // handle unknown endpoints
