@@ -28,12 +28,6 @@ app.get('/public/auth.bundle.js',
 
 app.use('/auth', authRouter);
 
-// fenced endpoint
-app.get('/secret', cookieController.checkSessionCookie, (req, res) => {
-  if (res.locals.validated === true) return res.status(200).send('You are welcome here');
-  return res.status(200).send('Get out');
-});
-
 app.get('/visualizer',
   cookieController.checkSessionCookie,
   (req, res) => {

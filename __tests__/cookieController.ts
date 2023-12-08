@@ -53,7 +53,6 @@ describe('checkSessionCookie', () => {
       session: 'welcome'
     }
   });
-  console.log('describe ~ req1:', req1);
   const req2 = nodeMocks.createRequest({
 
   });
