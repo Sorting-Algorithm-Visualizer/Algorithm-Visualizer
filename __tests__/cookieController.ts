@@ -16,17 +16,20 @@ afterAll(async () => {
 
 describe('setSessionCookie', () => {
   const next = jest.fn();
-  const res: obj = nodeMocks.createResponse({
+  const res1: obj = nodeMocks.createResponse({
     locals: {
-      session: 'welcome'
+      authorized: true
     }
   });
+  const res2: obj = nodeMocks.createResponse({
+    locals: {}
+  });
   const req: obj = {};
-  test('sets the cookie', () => {
-    setSessionCookie(req, res, next);
+  test('sets the cookie if res.locals.authorized is true', () => {
+    setSessionCookie(req, res1, next);
 
     // something like this should be the test
-    expect(res.cookies).toEqual({
+    expect(res1.cookies).toEqual({
       session: {
         options: {
           httpOnly: true
@@ -34,6 +37,12 @@ describe('setSessionCookie', () => {
         value: 'welcome'
       }
     });
+  });
+
+  test('does not set the cookie otherwise', () => {
+    setSessionCookie(req, res2, next);
+
+    expect(res2.cookies).toEqual({});
   });
 });
 

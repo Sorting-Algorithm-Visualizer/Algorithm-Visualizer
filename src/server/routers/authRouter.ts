@@ -11,17 +11,16 @@ router.post('/register',
   authController.createUser,
   cookieController.setSessionCookie,
   (req, res) => {
-    res.status(200).send('made it back from auth');
+    res.redirect('/visualizer');
   }
 );
 
-router.post('/login', authController.authUser, (req, res) => {
-  res.status(200).send('redirect to homepage');
-});
-
-router.post('/signup', (req, res) => {
-  // res.status(200).send('made it back from auth');
-  res.redirect('/visualizer');
-});
+router.post('/login',
+  authController.authUser,
+  cookieController.setSessionCookie,
+  (req, res) => {
+    res.redirect('/visualizer');
+  }
+);
 
 module.exports = router;

@@ -12,8 +12,9 @@ const cookieController: {
 cookieController.setSessionCookie = (req, res, next) => {
   // sets a cookie that will be used to tell whether client is logged in
   console.log('entered setSessionCookie');
-
-  res.cookie('session', 'welcome', { httpOnly: true });
+  if (res.locals.authorized) {
+    res.cookie('session', 'welcome', { httpOnly: true });
+  }
   return next();
 };
 
