@@ -5,8 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    auth: path.join(__dirname, 'src', 'client', 'index.tsx'),
-    visualizer: path.join(__dirname, 'src', 'client', 'visual.tsx')
+    'public/auth': path.join(__dirname, 'src', 'client', 'index.tsx'),
+    'private/visualizer': path.join(__dirname, 'src', 'client', 'visual.tsx')
   },
   output: {
     filename: '[name].bundle.js'
@@ -45,15 +45,15 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/client/index.html',
-      filename: 'index.html',
+      filename: 'public/index.html',
       inject: true,
-      chunks: ['auth']
+      chunks: ['public/auth']
     }),
     new HtmlWebpackPlugin({
       template: './src/client/index.html',
-      filename: 'visualizer.html',
+      filename: 'private/visualizer.html',
       inject: true,
-      chunks: ['visualizer']
+      chunks: ['private/visualizer']
     })
   ],
   resolve: {

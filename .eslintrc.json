@@ -18,6 +18,8 @@
     "@typescript-eslint/consistent-indexed-object-style": [
       "warn",
       "index-signature"
-    ]
+    ],
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/consistent-type-definitions": "off"
   }
 }

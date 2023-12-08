@@ -1,15 +1,14 @@
 // this is our server
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 
 const authRouter = require('./routers/authRouter');
-const authController = require('./controllers/authController');
+// const authController = require('./controllers/authController');
+const cookieController = require('./controllers/cookieController');
 
 const app = express();
 const port: number = 3000;
-
-// serve static files
-app.use(express.static('dist'));
 
 // parse incoming json
 app.use(express.json());
@@ -17,15 +16,51 @@ app.use(express.json());
 // parse incoming urlencoded data
 app.use(express.urlencoded({ extended: true }));
 
-app.post('/login', authController.authUser, (req, res) => {
-  res.redirect('/visualizer');
-});
+// parse incoming cookies
+app.use(cookieParser());
+
+app.get('/public/auth.bundle.js',
+  (req, res) => {
+    console.log('got here');
+    return res.sendFile(path.join(__dirname, '..', '..', 'dist', 'public', 'auth.bundle.js'));
+  }
+);
 
 app.use('/auth', authRouter);
 
-app.get('/visualizer', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', '..', 'dist', 'visualizer.html'));
-});
+app.get('/visualizer',
+  cookieController.checkSessionCookie,
+  (req, res) => {
+    if (res.locals.validated) {
+      res.sendFile(path.join(__dirname, '..', '..', 'dist', 'private', 'visualizer.html'));
+    } else {
+      res.redirect('/');
+    }
+  }
+);
+
+app.get('/private/visualizer.bundle.js',
+  cookieController.checkSessionCookie,
+  (req, res) => {
+    if (res.locals.validated) {
+      res.sendFile(path.join(__dirname, '..', '..', 'dist', 'private', 'visualizer.bundle.js'));
+    } else {
+      res.redirect('/');
+    }
+  }
+);
+
+app.get('/',
+  cookieController.checkSessionCookie,
+  (req, res) => {
+    if (res.locals.validated) {
+      res.redirect('/visualizer');
+    } else {
+      res.sendFile(path.join(__dirname, '..', '..', 'dist', 'public', 'index.html'));
+    }
+  }
+);
+
 
 // handle unknown endpoints
 app.use((req, res) => {
