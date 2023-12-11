@@ -9,12 +9,12 @@ const LoginPage = () => {
 
   return (
       <div className='form-container'>
-        <form action='/login' method='POST'>
+        <form action='auth/login' method='POST'>
           <div className='input-group'>
             <input id='username' name='username' className='input-boxes' placeholder='Enter username'></input>
           </div>
           <div className='input-group'>
-            <input id='password' name='password' className='input-boxes' placeholder='Enter password'></input>
+            <input id='password' name='password' className='input-boxes' type='password' placeholder='Enter password'></input>
           </div>
           <div className='button-group'>
             <button id='submit'>Login</button>
